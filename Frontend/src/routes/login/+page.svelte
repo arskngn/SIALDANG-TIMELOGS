@@ -21,6 +21,12 @@
 		capsLockOn = typeof e.getModifierState === 'function' ? e.getModifierState('CapsLock') : false;
 	}
 
+	function fillDemo(u: string, p: string) {
+		username = u;
+		password = p;
+		error = null;
+	}
+
 	async function submit(e: Event) {
 		e.preventDefault();
 		error = null;
@@ -180,7 +186,7 @@
 				<button
 					type="submit"
 					disabled={isLoading}
-					class="focus:shadow-outline rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+					class="focus:shadow-outline w-full rounded bg-blue-500 py-2.5 font-bold text-white transition hover:bg-blue-700 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
 				>
 					{#if isLoading}
 						Logging in...
@@ -188,6 +194,39 @@
 						Login
 					{/if}
 				</button>
+			</div>
+
+			<div class="mt-6 border-t border-gray-200 pt-4 dark:border-gray-700">
+				<div class="mb-2 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-gray-500">
+					<span>Live Demo Quick Fill</span>
+					<span class="text-[10px] font-normal text-blue-500 lowercase">Click to fill</span>
+				</div>
+				<div class="grid grid-cols-3 gap-2">
+					<button
+						type="button"
+						on:click={() => fillDemo('admin', 'DemoAdmin123!')}
+						class="flex flex-col items-center rounded border border-gray-200 bg-gray-50 p-2 text-xs font-medium text-gray-700 transition hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+					>
+						<span class="font-bold text-blue-600">👑 Admin</span>
+						<span class="text-[10px] text-gray-400">admin</span>
+					</button>
+					<button
+						type="button"
+						on:click={() => fillDemo('manager', 'DemoManager123!')}
+						class="flex flex-col items-center rounded border border-gray-200 bg-gray-50 p-2 text-xs font-medium text-gray-700 transition hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+					>
+						<span class="font-bold text-amber-600">👔 Manager</span>
+						<span class="text-[10px] text-gray-400">manager</span>
+					</button>
+					<button
+						type="button"
+						on:click={() => fillDemo('employee', 'DemoUser123!')}
+						class="flex flex-col items-center rounded border border-gray-200 bg-gray-50 p-2 text-xs font-medium text-gray-700 transition hover:border-blue-500 hover:bg-blue-50 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+					>
+						<span class="font-bold text-green-600">👤 Staff</span>
+						<span class="text-[10px] text-gray-400">employee</span>
+					</button>
+				</div>
 			</div>
 		</form>
 
