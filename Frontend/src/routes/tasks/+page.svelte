@@ -2020,8 +2020,8 @@
 							<li>For onsite time adjustments, include time for lunch breaks.</li>
 							<li>
 								For any clarifications/suggestions, please contact admin, or email to:
-								<a href="mailto:hsarmiento@sialdang.com" class="text-blue-600 hover:underline"
-									>hsarmiento@sialdang.com</a
+								<a href="mailto:arieskingnieto@gmail.com" class="text-blue-600 hover:underline"
+									>arieskingnieto@gmail.com</a
 								>
 							</li>
 						</ul>
