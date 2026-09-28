@@ -1,0 +1,174 @@
+@import 'tailwindcss';
+
+/* Dark mode transitions */
+* {
+	transition:
+		background-color 0.2s ease-in-out,
+		color 0.2s ease-in-out;
+}
+
+/* Base styles */
+html {
+	background-color: white;
+}
+
+html,
+body {
+	min-height: 100%;
+	overflow-y: auto;
+}
+
+html.dark {
+	background-color: #111827;
+	color: white;
+}
+
+/* Force mappings for common utility classes so dark mode affects components that have explicit
+     bg-* classes applied (useful if Tailwind dark variants weren't compiled/applied everywhere). */
+.dark .bg-white {
+	background-color: #0f172a !important; /* slate-900-ish */
+	color: #e5e7eb !important; /* gray-200 */
+}
+.dark .bg-gray-50 {
+	background-color: #0b1220 !important; /* slightly lighter card bg in dark */
+	color: #d1d5db !important;
+}
+.dark .bg-red-100 {
+	background-color: #451212 !important;
+	color: #fecaca !important;
+}
+.dark .bg-green-100 {
+	background-color: #083624 !important;
+	color: #bbf7d0 !important;
+}
+.dark .text-gray-600 {
+	color: #9ca3af !important;
+}
+.dark .text-gray-700 {
+	color: #d1d5db !important;
+}
+.dark .border {
+	border-color: rgba(255, 255, 255, 0.06) !important;
+}
+.dark .shadow-md {
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Ensure main background switches if it still has explicit bg-white */
+.dark main.bg-white {
+	background-color: #0b1220 !important;
+}
+
+/* Hide light-mode specific borders when in dark mode so no white/gray lines appear */
+.dark .border-gray-200,
+.dark .border-gray-300,
+.dark .border-gray-100 {
+	border-color: transparent !important;
+}
+
+.minute-grid {
+	background-image: repeating-linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 0.16) 0px,
+		rgba(0, 0, 0, 0.16) 1px,
+		transparent 1px,
+		transparent 12px
+	);
+	background-clip: padding-box;
+}
+.dark .minute-grid {
+	background-image: repeating-linear-gradient(
+		to bottom,
+		rgba(255, 255, 255, 0.22) 0px,
+		rgba(255, 255, 255, 0.22) 1px,
+		transparent 1px,
+		transparent 12px
+	);
+}
+
+/* Ensure totals row text is readable in dark mode */
+.dark .totals-row td {
+	color: #ffffff !important;
+}
+
+.dark .totals-row {
+	background-color: #000000 !important;
+}
+
+.hour-box {
+	box-shadow: none;
+}
+.dark .hour-box {
+	box-shadow: none;
+}
+
+.day-divider {
+	border-left: 1px solid rgba(0, 0, 0, 0.18);
+}
+.dark .day-divider {
+	border-left-color: rgba(255, 255, 255, 0.18);
+}
+
+.last-day {
+	border-right: 1px solid rgba(0, 0, 0, 0.18);
+}
+.dark .last-day {
+	border-right-color: rgba(255, 255, 255, 0.18);
+}
+
+.last-hour,
+.last-hour-label {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+}
+.dark .last-hour,
+.dark .last-hour-label {
+	border-bottom-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Clear rectangle around each hour cell */
+.hour-box::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border: none;
+	pointer-events: none;
+}
+.dark .hour-box::before {
+	border-color: transparent;
+}
+
+.hour-label-box {
+	position: relative;
+	border-right: 1px solid rgba(0, 0, 0, 0.18);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.hour-label-box::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border: none;
+	pointer-events: none;
+}
+.dark .hour-label-box::before {
+	border-color: transparent;
+}
+.dark .hour-label-box {
+	border-right-color: rgba(255, 255, 255, 0.18);
+	border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+/* Highlight current hour label */
+.hour-label-box {
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hour-label-box.current-hour-label {
+	background-color: rgba(59, 130, 246, 0.15);
+	color: rgb(59, 130, 246);
+	font-weight: 600;
+	border-left: 3px solid rgb(59, 130, 246);
+}
+.dark .hour-label-box.current-hour-label {
+	background-color: rgba(59, 130, 246, 0.2);
+	color: rgb(96, 165, 250);
+	border-left-color: rgb(96, 165, 250);
+}
